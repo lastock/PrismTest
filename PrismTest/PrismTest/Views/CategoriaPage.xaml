@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PrismTest.Views.CategoriaPage"
+             xmlns:c="clr-namespace:CustomListViewControl;assembly=CustomListViewControl"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding NavigateToMainPageCommand}" Order = "Primary" Icon="lupa32.png"  />
+        <ToolbarItem Text="Home" Command="{Binding NavigateToMainPageCommand}" Order = "Secondary"/>
+        <ToolbarItem Text="Categorias" Command="{Binding NavigateToCategoriaPageCommand}" Order = "Secondary"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Padding="10">
+        <c:CustomListView ItemsSource="{Binding Categorias}" 
+                      ItemTappedCommand="{Binding ItemTappedCommand}"
+        >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell ImageSource="{Binding UrlLogo}" Text="{Binding NomeCategoria}" TextColor="Navy" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </c:CustomListView>
+    </StackLayout>
+</ContentPage>
